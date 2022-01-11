@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./Components/Login/Login";
+const { io } = require("socket.io-client");
 
 function App() {
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const socketop = io(process.env.REACT_APP_WS, {
+      transports: ["websocket"],
+    });
+
+    setSocket(socketop);
+
+    socketop.on("connect", () => {
+      console.log("Connected");
+    });
+
+    socketop.on("lessgo", (s) => {
+      console.log(s);
+    });
+    // return () => socketop.close();
+  }, [setSocket]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/dashboard"></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
