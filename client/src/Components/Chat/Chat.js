@@ -24,6 +24,14 @@ const Chat = () => {
         <Msg msg="Hello 1234567890" />
         <Msg opp msg="Hello 1234567890" />
         <Msg msg="Hello 1234567890" />
+        <Msg opp msg="Hello 1234567890" />
+        <Msg msg="Hello 1234567890" />
+        <Msg opp msg="Hello 1234567890" />
+        <Msg msg="Hello 1234567890" />
+        <Msg opp msg="Hello 1234567890" />
+        <Msg msg="Hello 1234567890" />
+        <Msg opp msg="Hello 1234567890" />
+        <Msg msg="Hello 1234567890" />
       </div>
       <div className={classes.Bottom}>
         <div className={classes.Emoji}>

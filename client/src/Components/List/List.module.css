@@ -1,0 +1,54 @@
+.Lists {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+}
+
+.Header {
+  border: 1px solid grey;
+  flex: 5%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 30px;
+  gap: 20px;
+}
+
+.Search {
+  flex: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Search input {
+  margin: 5px;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid lightgray;
+  font-size: 14px;
+  background-color: white;
+  background-image: url("https://www.w3schools.com/css/searchicon.png");
+  background-position: 20px 10px;
+  background-repeat: no-repeat;
+  padding-left: 60px;
+}
+
+.Image {
+  background-color: lightgray;
+}
+
+.Image img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.List {
+  overflow-y: scroll;
+  flex: 80%;
+}

@@ -1,0 +1,42 @@
+.Friend {
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 15px;
+  gap: 10px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.Friend:hover {
+  background-color: lightgrey;
+}
+
+.Image {
+  flex: 20%;
+}
+.Data {
+  flex: 90%;
+}
+.Name {
+  font-size: 18px;
+  font-weight: 500;
+}
+.Msg {
+  font-size: 14px;
+  color: grey;
+}
+
+.Time {
+  flex: 10%;
+  font-size: 10px;
+  padding-right: 10px;
+}
+
+.Image img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}

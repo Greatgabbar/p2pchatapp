@@ -2,9 +2,9 @@
   display: flex;
 }
 .Chat {
-  flex: 60%;
+  flex: 70%;
 }
 
 .List {
-  flex: 40%;
+  flex: 30%;
 }
