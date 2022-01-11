@@ -1,0 +1,10 @@
+.Dashboard {
+  display: flex;
+}
+.Chat {
+  flex: 60%;
+}
+
+.List {
+  flex: 40%;
+}

@@ -1,0 +1,10 @@
+.Msg {
+  background-color: chartreuse;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  width: fit-content;
+  display: flex;
+  justify-content: right;
+}
