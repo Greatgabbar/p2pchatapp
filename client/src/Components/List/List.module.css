@@ -6,8 +6,8 @@
 }
 
 .Header {
-  border: 1px solid grey;
-  flex: 5%;
+  border-right: 1px solid rgb(182, 179, 179);
+  flex: 4.5%;
   background-color: lightgray;
   display: flex;
   justify-content: flex-start;
@@ -17,6 +17,7 @@
 }
 
 .Search {
+  border-right: 1px solid lightgray;
   flex: 5%;
   display: flex;
   justify-content: center;
@@ -49,6 +50,7 @@
 }
 
 .List {
+  border-right: 1px solid lightgray;
   overflow-y: scroll;
   flex: 80%;
 }
