@@ -1,9 +1,12 @@
 import classes from "./Login.module.css";
 import logo from "./google.png";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let navigate = useNavigate();
   const clickHandle = () => {
-    console.log("Login Handle");
+    // navigate(`${process.env.REACT_APP_SERVER}/api/auth/login`);
+    window.location.href = `${process.env.REACT_APP_SERVER}/api/auth/login`;
   };
 
   return (

@@ -15,7 +15,7 @@ passport.use(
     },
     async (req, accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ email: profile.email });
-      console.log(profile);
+      // console.log(profile);
       if (!user) {
         user = new User({
           name: profile.displayName,
@@ -33,7 +33,7 @@ passport.use(
 
 // * Passport serializeUser
 passport.serializeUser((participant, done) => {
-  console.log(participant);
+  // console.log(participant);
   done(null, participant.id);
 });
 

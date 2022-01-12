@@ -1,6 +1,8 @@
 module.exports = (io) => {
-  io.on("connection", (socket) => {
+  io.on("connection", async (socket) => {
     console.log(socket.id);
-    socket.emit("lessgo", { msg: "Welcome", id: socket.id });
+    const sockets = await io.fetchSockets();
+    console.log(socket.request.user);
+    socket.emit("lessgo", { msg: "Welcome", id: socket.handshake });
   });
 };
