@@ -80,16 +80,20 @@ io.use(
 
 function onAuthorizeSuccess(data, accept) {
   console.log("successful connection to socket.io");
-  console.log(data); // The accept-callback still allows us to decide whether to
-
+  // console.log(data); // The accept-callback still allows us to decide whether to
+  accept(null, true);
   // accept the connection or not.
-  accept(data);
+  // accept(data);
 }
 
 function onAuthorizeFail(data, message, error, accept) {
-  // if (error) throw new Error(message);
-  console.log("failed connection to socket.io:", message);
-  accept(new Error("not Authorized"));
+  if (error) {
+    throw new Error(message);
+  } else {
+    console.log(message);
+    // the same accept-method as above in the success-callback
+    return accept(null, false);
+  }
 }
 
 require("./config/sockets")(io);

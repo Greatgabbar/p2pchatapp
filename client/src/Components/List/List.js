@@ -1,7 +1,32 @@
 import Friend from "./Friends/Friends";
 import classes from "./List.module.css";
 
-const List = () => {
+const arr = [
+  {
+    name: "Shubham Tribvedi",
+    msg: "Hello !!!!",
+    time: "yesterday",
+    email: "strivedi_be19@thapar.edu",
+  },
+  {
+    name: "Shubham Tribvedi",
+    msg: "Hello !!!!",
+    time: "yesterday",
+    email: "shubham072001@gmail.com",
+  },
+  {
+    name: "Shubham Tribvedi",
+    msg: "Hello !!!!",
+    time: "yesterday",
+    email: "shubham072001@gmail.com",
+  },
+];
+
+const List = ({ setReceiver }) => {
+  const clickHandle = (gg) => {
+    setReceiver(gg.email);
+    console.log(gg);
+  };
   return (
     <div className={classes.Lists}>
       <div className={classes.Header}>
@@ -13,22 +38,17 @@ const List = () => {
         <input type="text" placeholder="Search or start new Chat" />
       </div>
       <div className={classes.List}>
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
-        <Friend name="Shubham" msg="Hello !!!" time="yesterday" />
+        {arr.map((gg, i) => {
+          return (
+            <Friend
+              key={gg.email + i}
+              name={gg.name}
+              msg={gg.msg}
+              time={gg.time}
+              clickHandle={() => clickHandle(gg)}
+            />
+          );
+        })}
       </div>
     </div>
   );

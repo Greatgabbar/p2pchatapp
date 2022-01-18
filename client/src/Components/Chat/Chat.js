@@ -1,13 +1,63 @@
 import classes from "./Chat.module.css";
 import emoji from "./emoji.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Msg from "./msg/msg";
 
-const Chat = () => {
-  const [chat, setChat] = useState(null);
+const Chat = ({ socket, receiver }) => {
+  const [chat, setChat] = useState([
+    {
+      from: "hdhdh",
+      msg: "Hello1 2333",
+      time: "yedgyed",
+    },
+    {
+      from: "hello123",
+      msg: "Hello1 2ddwdwdjwend",
+      time: "yedgyed",
+    },
+    {
+      from: "hdhdh",
+      msg: "adkjwedwedwe d wed wedw",
+      time: "yedgyed",
+    },
+    {
+      from: "hdhdh",
+      msg: "dnwjdbwedwed we dwed",
+      time: "yedgyed",
+    },
+    {
+      from: "hdhdh",
+      msg: "wjehdbwedjwed",
+      time: "yedgyed",
+    },
+    {
+      from: "hdhdh",
+      msg: "Hello1 2333",
+      time: "yedgyed",
+    },
+  ]);
+
+  const [msg, setMsg] = useState(null);
+
+  useEffect(() => {
+    if (!socket) return;
+    console.log("Chats useEffect");
+    socket.on("receiveMsg", (data) => {
+      console.log(data);
+    });
+  }, []);
 
   const inputHandle = (e) => {
-    setChat(e.target.value);
+    setMsg(e.target.value);
+  };
+
+  const handleSend = (e) => {
+    if (e.key === "Enter") {
+      setChat([...chat, { from: "me", msg: msg, time: new Date() }]);
+      socket.emit("sendMsg", { msg: msg, to: receiver, time: new Date() });
+      e.target.value = "";
+      setMsg("");
+    }
   };
 
   return (
@@ -19,19 +69,15 @@ const Chat = () => {
         <div className={classes.Name}>Jhon Doe</div>
       </div>
       <div className={classes.Main}>
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
-        <Msg opp msg="Hello 1234567890" />
-        <Msg msg="Hello 1234567890" />
+        {chat.map((msg, i) => {
+          return (
+            <Msg
+              key={msg.time + i}
+              msg={msg.msg}
+              opp={msg.from === "me" ? true : false}
+            />
+          );
+        })}
       </div>
       <div className={classes.Bottom}>
         <div className={classes.Emoji}>
@@ -41,6 +87,7 @@ const Chat = () => {
           <input
             type="text"
             onChange={inputHandle}
+            onKeyDown={handleSend}
             placeholder="Type something ..."
           />
         </div>
